@@ -1,7 +1,5 @@
 # PHPprojektPliki
-good ideas:
-notatnik online, 
-menedżer haseł, 
+
 blog jakiś(logowanie, notatki, wpisy itp. w nim)
 
 
