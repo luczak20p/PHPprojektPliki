@@ -9,5 +9,6 @@ if (!preg_match('/^([A-Za-z0-9-_]+)$/', $_POST["login"]) || !preg_match('/^([A-Z
     }
 }
 $aaaaaaaaaa = file_get_contents("uzytkownicy.txt");
-$b = explode(",", $aaaaaaaaaa);
-var_dump($b);
+
+$c = array_filter(explode(",", $aaaaaaaaaa));
+var_dump($c);
