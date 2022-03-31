@@ -25,4 +25,13 @@
 
 </body>
 
+<?php
+session_start();
+
+if(isset($_SESSION["ErrorMassage"])){
+    echo "<div class=m-3> {$_SESSION["ErrorMassage"]} </div>";
+}
+
+?>
+
 </html>
