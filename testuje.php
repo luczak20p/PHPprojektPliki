@@ -75,6 +75,13 @@ if (isset($_POST["usun"]) && preg_match('/^([A-Za-z0-9-_]+)$/', $_POST["usun"]))
     if (is_writable("pliki/{$_POST["usun"]}.txt")) {
         unlink("pliki/{$_POST["usun"]}.txt");
         echo "plik został usunięty";
+        $pliki = scandir('pliki/');
+        foreach ($pliki as $key => $value) {
+            if (!in_array($value, array(".", ".."))) {
+                $plikiWyniki[$key] = $pliki[$key];
+            }
+        }
+        print_r($plikiWyniki);
     } else {
         echo "nie ma takiego pliku";
     }
