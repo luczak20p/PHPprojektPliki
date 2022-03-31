@@ -10,12 +10,12 @@
 </head>
 
 <body>
-    <form action=testuje.php method=post class="m-3"> 
+    <form action=walidacja.php method=post class="m-3">
         <div class="mb-3">
-        <label for=login class="form-label">Nazwa użytkownika<input id=login name=login class="form-control"></label>
+            <label for=login class="form-label">Nazwa użytkownika<input id=login name=login class="form-control"></label>
         </div>
         <div class="mb-3">
-        <label for=password class="form-label">Hasło<input type=password id=password name=password class="form-control"></label>
+            <label for=password class="form-label">Hasło<input type=password id=password name=password class="form-control"></label>
         </div>
 
         <input type=submit class="btn btn-success">
@@ -28,7 +28,7 @@
 <?php
 session_start();
 
-if(isset($_SESSION["ErrorMassage"])){
+if (isset($_SESSION["ErrorMassage"])) {
     echo "<div class=m-3> {$_SESSION["ErrorMassage"]} </div>";
 }
 
