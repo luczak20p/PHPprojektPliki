@@ -7,9 +7,10 @@ $uzytkownicy = explode(",", file_get_contents("uzytkownicy.txt"));
 
 function testowanie($uzytkownicy){
 
-    for($i=0;$i<count($uzytkownicy);$i+=2){
+    for($i=0;$i<count($uzytkownicy);$i++){
 
         if($_POST["login"]==$uzytkownicy[$i]&&$_POST["password"]==$uzytkownicy[$i+1]){
+            echo "O";
             return true;
         }
     
@@ -27,26 +28,32 @@ if (isset($_POST["login"]) && isset($_POST["password"])) {
         if (is_writable("uzytkownicy.txt")) {
 
             if(in_array($_POST["login"], $uzytkownicy)){
-
+                if(testowanie($uzytkownicy)){
+                    $_SESSION["user"] = $_POST["login"];
+                    header("Location: testuje.php");
+                }
+                else{
+                    $_SESSION["ErrorMassage"] = "Złe hasło lub login ";
+                    header("Location: logowanie.php");
+                }
 
             }
             else{
-                fwrite(fopen("uzytkownicy.txt", "a+"), "{$_POST["login"]},{$_POST["password"]},\n");
+                //trzeba zrobić osobno userów i osobno hasła
+                fwrite(fopen("uzytkownicy.txt", "a+"), "{$_POST["login"]},{$_POST["password"]},");
+                $testujeee ="pliki\\{$_POST['login']}";
+                mkdir($testujeee);
                 $_SESSION["ErrorMassage"] = "";
                 $_SESSION["user"] = $_POST["login"];
+                header("Location: testuje.php");
 
             }
            
         }
     }
 
-    if(testowanie($uzytkownicy)){
-        header("Location: testuje.php");
-    }
-    else{
-        $_SESSION["ErrorMassage"] = "Złe hasło lub login";
-        header("Location: logowanie.php");
-    }
+
+
 
 
 }

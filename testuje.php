@@ -61,21 +61,26 @@ var_dump($c);
 $plikiWyniki = array();
 
 if (isset($_POST["wiado"]) && isset($_POST["tytul"]) && preg_match('/^([A-Za-z0-9-_]+)$/', $_POST["tytul"])) {
-    fwrite(fopen("pliki/{$_POST["tytul"]}.txt", "w+"), "{$_POST["wiado"]}");
-    $pliki = scandir('pliki/');
+    fwrite(fopen("pliki/{$_SESSION["user"]}/{$_POST["tytul"]}.txt", "w+"), "{$_POST["wiado"]}");
+    $pliki = scandir("pliki/{$_SESSION["user"]}");
     foreach ($pliki as $key => $value) {
         if (!in_array($value, array(".", ".."))) {
             $plikiWyniki[$key] = $pliki[$key];
         }
     }
-    print_r($plikiWyniki);
+    echo "<div class='bg-dark bg-gradient text-light'><h2 class='ms-3'>Pliki użytkownika:</h2>";
+    foreach($plikiWyniki as $key=>$value){
+        echo "<h3 class='ms-3'>{$plikiWyniki[$key]}</h3>";
+    }
+    echo "</div>";
+    
 }
 
 if (isset($_POST["usun"]) && preg_match('/^([A-Za-z0-9-_]+)$/', $_POST["usun"])) {
-    if (is_writable("pliki/{$_POST["usun"]}.txt")) {
-        unlink("pliki/{$_POST["usun"]}.txt");
+    if (is_writable("pliki/{$_SESSION["user"]}/{$_POST["usun"]}.txt")) {
+        unlink("pliki/{$_SESSION["user"]}/{$_POST["usun"]}.txt");
         echo "plik został usunięty";
-        $pliki = scandir('pliki/');
+        $pliki = scandir("pliki/{$_SESSION["user"]}");
         foreach ($pliki as $key => $value) {
             if (!in_array($value, array(".", ".."))) {
                 $plikiWyniki[$key] = $pliki[$key];
