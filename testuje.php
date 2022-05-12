@@ -50,7 +50,7 @@ $pliki = scandir("pliki/{$_SESSION["user"]}");
 
         </div>
         <div class="mb-3">
-            <label for=wiado2 class="form-label">Zawartość pliku<textarea name=wiado2 id=wiado2 class="form-control"></textarea></label>
+            <label for=wiado2 class="form-label">Pliki użytkownika<textarea name=wiado2 id=wiado2 class="form-control"></textarea></label>
         </div>
         <input type=submit value="Edytuj plik" class="btn btn-primary">
 
