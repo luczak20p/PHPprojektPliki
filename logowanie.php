@@ -10,7 +10,7 @@
     <link href="style.css" rel="stylesheet">
 </head>
 
-<body>
+<body class='bg-dark text-light'>
     <form action=walidacja.php method=post class="m-3 d-flex flex-column align-items-center">
         <div class="mb-3">
             <label for=login class="form-label">Nazwa użytkownika<input id=login name=login class="form-control"></label>
