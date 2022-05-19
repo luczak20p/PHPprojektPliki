@@ -23,7 +23,7 @@ function testowanie($uzytkownicy){
 if (isset($_POST["login"]) && isset($_POST["password"])) {
     if (!preg_match('/^([A-Za-z0-9-_]+)$/', $_POST["login"]) || !preg_match('/^([A-Za-z0-9-_]+)$/', $_POST["password"])) {
         $_SESSION["ErrorMassage"] = "Błędne hasło lub nazwa użytkownika";
-        header("Location: logowanie.php");
+        header("Location: index.php");
     } else {
         if (is_writable("uzytkownicy.txt")) {
 
@@ -34,18 +34,14 @@ if (isset($_POST["login"]) && isset($_POST["password"])) {
                 }
                 else{
                     $_SESSION["ErrorMassage"] = "Złe hasło lub login ";
-                    header("Location: logowanie.php");
+                    header("Location: index.php");
                 }
 
             }
             else{
                 //trzeba zrobić osobno userów i osobno hasła
-                fwrite(fopen("uzytkownicy.txt", "a+"), "{$_POST["login"]},{$_POST["password"]},");
-                $testujeee ="pliki\\{$_POST['login']}";
-                mkdir($testujeee);
-                $_SESSION["ErrorMassage"] = "";
-                $_SESSION["user"] = $_POST["login"];
-                header("Location: testuje.php");
+                $_SESSION["ErrorMassage"] = "Użytkownik nie istnieje. Zarejestruj się.";
+                header("Location: index.php");
 
             }
            

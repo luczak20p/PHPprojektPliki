@@ -13,13 +13,14 @@ session_start();
     <title>Document</title>
 </head>
 <body class='bg-dark text-light '>
-<div class='bg-info d-flex flex-row-reverse align-items-center'>
+<div class='bg-info d-flex'>
+<p class='m-3 me-auto p-2 fs-2'>PocketBook</p>
+<p class='m-3 p-2 fs-3'>Witaj <?php  echo $_SESSION["user"]?></p>
 <?php 
-echo "<form action=logowanie.php method=post class=m-3>";
-echo "<button class='btn btn-info text-light'>Wyloguj</button>";
+echo "<form action=index.php method=post class='m-3 p-2'>";
+echo "<button class='btn btn-info text-light border'>Wyloguj</button>";
 echo "</form>";
 ?>
-<h1 class=m-3>Witaj <?php  echo $_SESSION["user"]?></h1>
 </div>
     
 </body>
