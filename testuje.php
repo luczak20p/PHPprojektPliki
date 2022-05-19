@@ -19,6 +19,7 @@ $pliki = scandir("pliki/{$_SESSION["user"]}");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href=style.css>
 </head>
 
 <body class='bg-dark text-light'>
@@ -33,7 +34,8 @@ echo "</form>";
 ?>
 </div>
 
-    <form action=testuje.php method=post class="m-3">
+    <div class='d-flex'>
+    <form action=testuje.php method=post class="m-3 me-auto p-2">
         <div class="mb-3">
             <label for=tytul class="form-label">Tytuł pliku(bez .txt)<input name=tytul id=tytul class="form-control"></label>
         </div>
@@ -43,6 +45,16 @@ echo "</form>";
         <input type=submit value="Utwórz plik" class="btn btn-success">
 
     </form>
+    <form class='p-2 overflow-auto' action=testuje.php method=post>
+    <div>
+        <h2>Chat:</h2>
+        <div class="wololo"><?php echo file_get_contents("chat.txt")?></div>
+    </div>
+    <label for=lol>Wiadomość <input id=lol name=porozmow></label>
+    <button type=submit>Wyślij</button>
+
+</form>
+    </div>
 
     <!-- <form action=testuje.php method=post class="m-3">
         <div class="mb-3">
@@ -79,6 +91,11 @@ echo "</form>";
 </html>
 
 <?php
+if (isset($_POST["porozmow"])){
+    fwrite(fopen("chat.txt", "a+"), $_SESSION['user'].": ".$_POST['porozmow']."<br>");
+    $_POST['porozmow']="";
+    header("Location: testuje.php");
+}
 
 $_SESSION["ErrorMassage"] = "Błędne hasło lub nazwa użytkownika";
 $_SESSION["nazwa"]="";
