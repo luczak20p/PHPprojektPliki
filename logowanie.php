@@ -28,7 +28,7 @@
 
 <?php
 session_start();
-
+$_SESSION["user"]="";
 if (isset($_SESSION["ErrorMassage"])) {
     echo "<div class=m-3> {$_SESSION["ErrorMassage"]} </div>";
     $_SESSION["ErrorMassage"] = "";

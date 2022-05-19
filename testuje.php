@@ -23,7 +23,14 @@ $pliki = scandir("pliki/{$_SESSION["user"]}");
 
 <body class='bg-dark text-light'>
 
+<div class='bg-info d-flex flex-row-reverse align-items-center'>
+<?php 
+echo "<form action=logowanie.php method=post class=m-3>";
+echo "<button class='btn btn-info text-light'>Wyloguj</button>";
+echo "</form>";
+?>
 <h1 class=m-3>Witaj <?php  echo $_SESSION["user"]?></h1>
+</div>
 
     <form action=testuje.php method=post class="m-3">
         <div class="mb-3">
@@ -73,6 +80,7 @@ $pliki = scandir("pliki/{$_SESSION["user"]}");
 <?php
 
 $_SESSION["ErrorMassage"] = "Błędne hasło lub nazwa użytkownika";
+$_SESSION["nazwa"]="";
 
 //logowanie do osobnego
 
@@ -101,10 +109,10 @@ if (isset($_POST["wiado"]) && isset($_POST["tytul"]) && preg_match('/^([A-Za-z0-
 $licznik=0;
 
 echo "<form action=wyswietl.php method=post class='m-3'>";
-echo "<div><h2 class='ms-3'>Pliki użytkownika:</h2>";
+echo "<div><h2>Pliki użytkownika:</h2>";
 foreach($plikiWyniki as $key=>$value){
-    echo "<h3 class='ms-3'>{$plikiWyniki[$key]}</h3>";
-    echo "<button type=submit name='nazwa' value='{$licznik}' class='btn btn-primary'>Wyświetl plik</button>";
+    echo "<h3>{$plikiWyniki[$key]}</h3>";
+    echo "<button type=submit name='nazwa' value='{$licznik}' class='btn btn-primary'>Wyświetl/edytuj plik</button>";
     $licznik++;
 }
 echo "</div>";
