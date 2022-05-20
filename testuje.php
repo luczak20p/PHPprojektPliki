@@ -91,6 +91,9 @@ echo "</form>";
 </html>
 
 <?php
+if($_SESSION["user"]==""){
+    header("Location: index.php");
+}
 if (isset($_POST["porozmow"])){
     fwrite(fopen("chat.txt", "a+"), $_SESSION['user'].": ".$_POST['porozmow']."<br>");
     $_POST['porozmow']="";
