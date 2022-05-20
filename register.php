@@ -21,7 +21,7 @@ if (isset($_POST["login"]) && isset($_POST["password"])) {
 
                 
                 fwrite(fopen("uzytkownik/uzytkownicy.txt", "a+"), "{$_POST["login"]},{$_POST["password"]},");
-                $testujeee ="pliki\\{$_POST['login']}";
+                $testujeee ="pliki/{$_POST['login']}";
                 mkdir($testujeee);
                 $_SESSION["ErrorMassage"] = "";
                 $_SESSION["user"] = $_POST["login"];
