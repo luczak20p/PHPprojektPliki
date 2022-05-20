@@ -2,7 +2,7 @@
 ob_start();
 session_start();
 $_SESSION["ErrorMassage"] = "";
-$uzytkownicy = explode(",", file_get_contents("uzytkownicy.txt"));
+$uzytkownicy = explode(",", file_get_contents("uzytkownik/uzytkownicy.txt"));
 
 
 function testowanie($uzytkownicy){
@@ -25,12 +25,12 @@ if (isset($_POST["login"]) && isset($_POST["password"])) {
         $_SESSION["ErrorMassage"] = "Błędne hasło lub nazwa użytkownika";
         header("Location: index.php");
     } else {
-        if (is_writable("uzytkownicy.txt")) {
+        if (is_writable("uzytkownik/uzytkownicy.txt")) {
 
             if(in_array($_POST["login"], $uzytkownicy)){
                 if(testowanie($uzytkownicy)){
                     $_SESSION["user"] = $_POST["login"];
-                    header("Location: testuje.php");
+                    header("Location: stronaGowna.php");
                 }
                 else{
                     $_SESSION["ErrorMassage"] = "Złe hasło lub login ";

@@ -3,7 +3,7 @@
 ob_start();
 session_start();
 $_SESSION["ErrorMassage"] = "";
-$uzytkownicy = explode(",", file_get_contents("uzytkownicy.txt"));
+$uzytkownicy = explode(",", file_get_contents("uzytkownik/uzytkownicy.txt"));
 
 
 if (isset($_POST["login"]) && isset($_POST["password"])) {
@@ -11,7 +11,7 @@ if (isset($_POST["login"]) && isset($_POST["password"])) {
         $_SESSION["ErrorMassage"] = "Błędne hasło lub nazwa użytkownika";
         header("Location: index.php");
     } else {
-        if (is_writable("uzytkownicy.txt")) {
+        if (is_writable("uzytkownik/uzytkownicy.txt")) {
 
             if(in_array($_POST["login"], $uzytkownicy)){
                 $_SESSION["ErrorMassage"] = "Użytkownik już istnieje.";
@@ -20,7 +20,7 @@ if (isset($_POST["login"]) && isset($_POST["password"])) {
             else{
 
                 
-                fwrite(fopen("uzytkownicy.txt", "a+"), "{$_POST["login"]},{$_POST["password"]},");
+                fwrite(fopen("uzytkownik/uzytkownicy.txt", "a+"), "{$_POST["login"]},{$_POST["password"]},");
                 $testujeee ="pliki\\{$_POST['login']}";
                 mkdir($testujeee);
                 $_SESSION["ErrorMassage"] = "";

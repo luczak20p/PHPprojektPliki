@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Logowanie</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet">
 </head>
 
 <body class='bg-dark text-light'>
     
-    <div class='bg-info d-flex'>
+    <nav class='bg-info d-flex'>
     <p class='m-3 me-auto p-2 fs-2'>PocketBook</p>
-    </div>
+</nav>
 
     <form method=post class="m-3 d-flex flex-column align-items-center">
         <div class="mb-3">
