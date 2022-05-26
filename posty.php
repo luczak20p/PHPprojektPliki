@@ -31,7 +31,7 @@ echo "</form>";
 
 <div>
 <p><label for=postu>Post:</label></p> 
-<textarea name=tresc id=tresc class=oknoPost></textarea></div>
+<textarea name=zawartosc id=zawartosc class=oknoPost></textarea></div>
 <input id=sendMsg value="Wyślij" class="btn btn-primary" >
 
 <div class=wololo2>
@@ -39,16 +39,15 @@ echo "</form>";
 </div>
 
 <script>
-document.querySelector("#sendMsg").addEventListener("click", sendMessage);
+document.querySelector("#sendMsg").addEventListener("click", konwersuj);
 
 
-function getChat() {
+function wyswietlChat() {
             let request = new XMLHttpRequest();
-            request.open("GET", "postowanie.php?"+ "&mode=get", true);
+            request.open("GET", "postowanie.php?"+ "&praca=get", true);
             request.onload = () => {
                 
-                    data = request.response;
-                    document.querySelector(".wololo2").innerHTML = data;
+                document.querySelector(".wololo2").innerHTML = request.response;
                    
 
                 
@@ -59,19 +58,19 @@ function getChat() {
         }
         
     
-function sendMessage() {
-            tresc = document.querySelector("#tresc").value;
-            console.log("postowanie.php?" +"&mode=update" + "&tresc=" + tresc)
+function konwersuj() {
+            zawartosc = document.querySelector("#zawartosc").value;
+            console.log("postowanie.php?" +"&praca=nowe" + "&zawartosc=" + zawartosc)
             let request = new XMLHttpRequest();
-            request.open("GET", "postowanie.php?" +"&mode=update" + "&tresc=" + tresc, true);
+            request.open("GET", "postowanie.php?" +"&praca=nowe" + "&zawartosc=" + zawartosc, true);
             request.send();
 
-            getChat();
+            wyswietlChat();
 
         }
 
 
-        setInterval(getChat, 1000)
+        setInterval(wyswietlChat, 1000)
 </script>
 </body>
 </html>

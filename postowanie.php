@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-if ($_GET["mode"] == "get") {
+if ($_GET["praca"] == "get") {
 
     
     $file = file("posty.txt");
@@ -11,7 +11,7 @@ if ($_GET["mode"] == "get") {
     }
 
 }
-if ($_GET["mode"] == "update") {
+if ($_GET["praca"] == "nowe") {
 
-    file_put_contents("posty.txt", PHP_EOL . $_SESSION["user"] ."(<span>".date("j F Y h:i:s A")."</span>)". ": " . $_GET["tresc"], FILE_APPEND);
+    file_put_contents("posty.txt", PHP_EOL . $_SESSION["user"] ."(<span>".date("j F Y h:i:s A")."</span>)". ": " . $_GET["zawartosc"], FILE_APPEND);
 }

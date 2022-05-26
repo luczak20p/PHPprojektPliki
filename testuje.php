@@ -52,7 +52,7 @@ echo "</form>";
     <div>
     <h2>Chat(nowe wiadomości na górze):</h2>
     <div class="wololo"></div>
-    <input id=tresc name=tresc>
+    <input id=zawartosc name=zawartosc>
     <button id=sendMsg>Wyślij</button>
 </div>
 
@@ -91,19 +91,17 @@ echo "</form>";
     </form>
 
 <script>
-document.querySelector("#sendMsg").addEventListener("click", sendMessage);
+document.querySelector("#sendMsg").addEventListener("click", konwersuj);
 
 messageBody = document.querySelector('.wololo');
 messageBody.scrollTop = messageBody.scrollHeight;
 
 
-function getChat() {
+function wyswietlChat() {
             let request = new XMLHttpRequest();
-            request.open("GET", "chatowanie.php?"+ "&mode=get", true);
+            request.open("GET", "chatowanie.php?"+ "&praca=get", true);
             request.onload = () => {
-                
-                    data = request.response;
-                    document.querySelector(".wololo").innerHTML = data;
+                    document.querySelector(".wololo").innerHTML = request.response;
                    
 
                 
@@ -114,19 +112,19 @@ function getChat() {
         }
         
     
-function sendMessage() {
-            tresc = document.querySelector("#tresc").value;
-            console.log("chatowanie.php?" +"&mode=update" + "&tresc=" + tresc)
+function konwersuj() {
+            zawartosc = document.querySelector("#zawartosc").value;
+            console.log("chatowanie.php?" +"&praca=nowe" + "&zawartosc=" + zawartosc)
             let request = new XMLHttpRequest();
-            request.open("GET", "chatowanie.php?" +"&mode=update" + "&tresc=" + tresc, true);
+            request.open("GET", "chatowanie.php?" +"&praca=nowe" + "&zawartosc=" + zawartosc, true);
             request.send();
 
-            getChat();
+            wyswietlChat();
 
         }
 
 
-        setInterval(getChat, 1000)
+        setInterval(wyswietlChat, 1000)
 </script>
 
 </body>
