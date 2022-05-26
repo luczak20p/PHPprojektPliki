@@ -47,15 +47,17 @@ echo "</form>";
         <input type=submit value="Utwórz plik" class="btn btn-success">
 
     </form>
-    <form class='p-2 overflow-auto' action=testuje.php method=post>
+    
+    
     <div>
-        <h2>Chat:</h2>
-        <div class="wololo"><?php echo file_get_contents("chat.txt")?></div>
-    </div>
-    <label for=lol>Wiadomość <input id=lol name=porozmow></label>
-    <button type=submit>Wyślij</button>
+    <h2>Chat(nowe wiadomości na górze):</h2>
+    <div class="wololo"></div>
+    <input id=tresc name=tresc>
+    <button id=sendMsg>Wyślij</button>
+</div>
 
-</form>
+
+
     </div>
 
     <!-- <form action=testuje.php method=post class="m-3">
@@ -88,7 +90,48 @@ echo "</form>";
 
     </form>
 
+<script>
+document.querySelector("#sendMsg").addEventListener("click", sendMessage);
+
+messageBody = document.querySelector('.wololo');
+messageBody.scrollTop = messageBody.scrollHeight;
+
+
+function getChat() {
+            let request = new XMLHttpRequest();
+            request.open("GET", "chatowanie.php?"+ "&mode=get", true);
+            request.onload = () => {
+                
+                    data = request.response;
+                    document.querySelector(".wololo").innerHTML = data;
+                   
+
+                
+
+
+            }
+            request.send();
+        }
+        
+    
+function sendMessage() {
+            tresc = document.querySelector("#tresc").value;
+            console.log("chatowanie.php?" +"&mode=update" + "&tresc=" + tresc)
+            let request = new XMLHttpRequest();
+            request.open("GET", "chatowanie.php?" +"&mode=update" + "&tresc=" + tresc, true);
+            request.send();
+
+            getChat();
+
+        }
+
+
+        setInterval(getChat, 1000)
+</script>
+
 </body>
+
+
 
 </html>
 

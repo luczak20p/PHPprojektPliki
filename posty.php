@@ -28,16 +28,51 @@ echo "</form>";
 </nav>
 <div class="d-flex justify-content-center flex-column align-items-center flex-wraps">
 <div class=postyTu>
-<form action=posty.php method=post>
-<label for=postu>Post: <textarea name=poscik></textarea></label>
-<input type=submit value="Wyślij" class="btn btn-primary" >
-</form>
+
 <div>
-<b>aaaa</b><span>(<?php echo date("j F Y h:i:s A"); ?>)</span>:
-<p><?php if(isset($_POST["poscik"])) {echo $_POST["poscik"];}?></p>
+<p><label for=postu>Post:</label></p> 
+<textarea name=tresc id=tresc class=oknoPost></textarea></div>
+<input id=sendMsg value="Wyślij" class="btn btn-primary" >
+
+<div class=wololo2>
+
 </div>
+
+<script>
+document.querySelector("#sendMsg").addEventListener("click", sendMessage);
+
+
+function getChat() {
+            let request = new XMLHttpRequest();
+            request.open("GET", "postowanie.php?"+ "&mode=get", true);
+            request.onload = () => {
+                
+                    data = request.response;
+                    document.querySelector(".wololo2").innerHTML = data;
+                   
+
+                
+
+
+            }
+            request.send();
+        }
+        
+    
+function sendMessage() {
+            tresc = document.querySelector("#tresc").value;
+            console.log("postowanie.php?" +"&mode=update" + "&tresc=" + tresc)
+            let request = new XMLHttpRequest();
+            request.open("GET", "postowanie.php?" +"&mode=update" + "&tresc=" + tresc, true);
+            request.send();
+
+            getChat();
+
+        }
+
+
+        setInterval(getChat, 1000)
+</script>
 </body>
 </html>
 
-<?php
-?>

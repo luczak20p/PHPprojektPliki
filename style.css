@@ -1,9 +1,11 @@
 .wololo{
-    height: 300px;
-    max-height:300px;
+    height:300px;
+    max-height: 300px;
     overflow: auto;
 }
-
+.wololo2{
+    overflow: auto;
+}
 b{
     font-size: 20px;
 }
@@ -16,3 +18,4 @@ span{
     max-width: 300px;
     overflow-wrap: break-word;
 }
+
