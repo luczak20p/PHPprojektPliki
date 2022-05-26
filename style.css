@@ -3,3 +3,16 @@
     max-height:300px;
     overflow: auto;
 }
+
+b{
+    font-size: 20px;
+}
+
+span{
+    font-size: 12px;;
+}
+
+.postyTu>div>p{
+    max-width: 300px;
+    overflow-wrap: break-word;
+}

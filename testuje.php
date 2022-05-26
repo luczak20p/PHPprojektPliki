@@ -25,8 +25,9 @@ $pliki = scandir("pliki/{$_SESSION["user"]}");
 <body class='bg-dark text-light'>
 
 <nav class='bg-info d-flex'>
-<p class='m-3 me-auto p-2 fs-2'>PocketBook</p>
-<p class='m-3 me-auto p-2 fs-2'><a href=stronaGowna.php class='text-decoration-none text-light'>Strona główna</a></p>
+<p class='m-3 me-auto p-2 fs-2'><a href=stronaGowna.php class='text-decoration-none text-light'>PocketBook</a></p>
+<p class='m-3 me-auto p-2 fs-2'><a href=stronaGowna.php class='text-decoration-none text-light'>Strona Główna</a></p>
+<p class='m-3 me-auto p-2 fs-2'><a href=posty.php class='text-decoration-none text-light'>Posty itp.</a></p>
 <p class='m-3 p-2 fs-3'>Witaj <?php  echo $_SESSION["user"]?></p>
 <?php 
 echo "<form action=logout.php method=post class='m-3 p-2'>";
